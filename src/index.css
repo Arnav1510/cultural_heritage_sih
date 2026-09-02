@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background-color: #070a14;
+  color: #e2e8f0;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: rgba(249, 115, 22, 0.3);
+  color: #fff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1120;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #f97316, #d97706);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #fb923c, #f59e0b);
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  .glass-strong {
+    @apply bg-white/10 backdrop-blur-xl border border-white/15;
+  }
+  .text-gradient-saffron {
+    @apply bg-gradient-to-r from-saffron-400 via-gold-400 to-saffron-500 bg-clip-text text-transparent;
+  }
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold-300 via-gold-400 to-saffron-400 bg-clip-text text-transparent;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-saffron-500 to-gold-500 px-6 py-3 font-semibold text-ink-950 transition-all duration-300 hover:from-saffron-400 hover:to-gold-400 hover:shadow-lg hover:shadow-saffron-500/30 active:scale-95;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 font-medium text-white backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:border-white/25 active:scale-95;
+  }
+}
+
+/* Heritage map state styles */
+.state-path {
+  fill: rgba(35, 51, 82, 0.6);
+  stroke: rgba(251, 191, 36, 0.4);
+  stroke-width: 0.5;
+  transition: fill 0.3s ease, stroke 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+.state-path:hover {
+  fill: rgba(249, 115, 22, 0.5);
+  stroke: rgba(251, 191, 36, 0.9);
+  stroke-width: 1;
+  filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.5));
+}
+.state-path.active {
+  fill: rgba(249, 115, 22, 0.7);
+  stroke: rgba(253, 211, 77, 1);
+  stroke-width: 1.2;
+  filter: drop-shadow(0 0 12px rgba(249, 115, 22, 0.7));
+}
+.state-path.has-data {
+  fill: rgba(16, 185, 129, 0.25);
+  stroke: rgba(52, 211, 153, 0.5);
+}
+.state-path.has-data:hover {
+  fill: rgba(249, 115, 22, 0.5);
+  stroke: rgba(251, 191, 36, 0.9);
+}
+
+/* Decorative gradient mesh background */
+.mesh-bg {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(249, 115, 22, 0.08), transparent),
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(217, 119, 6, 0.06), transparent),
+    radial-gradient(ellipse 70% 50% at 50% 80%, rgba(16, 185, 129, 0.05), transparent);
+}
+
+.mandala-spin {
+  animation: spin 60s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
